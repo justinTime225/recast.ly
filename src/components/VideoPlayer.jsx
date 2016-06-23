@@ -5,7 +5,7 @@ var VideoPlayer = ({video}) => (
     </div>
     <div className="video-player-details">
       <h3>{video.snippet.title}</h3>
-      <div>Video Description</div>
+      <div>{video.snippet.description}</div>
     </div>
   </div>
 );
