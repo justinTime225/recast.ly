@@ -7,7 +7,7 @@ var VideoListEntry = ({video}) => {
     </div>
     <div className="media-body">
       <div className="video-list-entry-title">{video.snippet.title}</div>
-      <div className="video-list-entry-detail">Video Description</div>
+      <div className="video-list-entry-detail">{video.snippet.description}</div>
     </div>
   </div>);
 };
