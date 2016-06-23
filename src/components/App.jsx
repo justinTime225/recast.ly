@@ -6,7 +6,7 @@ var App = () => (
       <h1>Hello</h1>
     </div>
     <div className="col-md-5">
-      <VideoList/>
+      <VideoList videos={window.exampleVideoData}/>
     </div>
   </div>
 );
