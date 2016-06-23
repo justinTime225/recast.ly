@@ -1,13 +1,13 @@
 class App extends React.Component {
-  componentWillMount() {
-    console.log(this.props.videoData);
-  }
+  // componentWillMount() {
+  //   console.log(this.props.videoData);
+  // }
   render() {
     return (
       <div>
         <Nav />
         <div className="col-md-7">
-          <VideoPlayer/>
+          <VideoPlayer video={this.props.videoData[0]}/>
           <h1>Hello</h1>
         </div>
         <div className="col-md-5">
