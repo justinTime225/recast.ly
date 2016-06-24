@@ -7,21 +7,25 @@ class App extends React.Component {
     };
   }
   componentWillMount() {
+    this.getYoutubeVideo('angular tutorial');
+  }
+  getYoutubeVideo(query) {
     var YOUTUBE_API_KEY = 'AIzaSyBEsl8wfrHqZ9Ue3NCyRjARt3S8NeTv8as';
-    console.log(this.props.YOUTUBE_API_KEY);
-    this.setState({videos: this.props.videoData});
     const option = {
       key: YOUTUBE_API_KEY,
-      query: 'react tutorial'
+      query: query
     };
     this.props.searchYouTube(option, function(response) {
       this.setState({videos: response, currentVideo: response[0]});
     }.bind(this));
   }
   render() {
+    if (!this.state.currentVideo) {
+      return <div>Video Loading</div>;
+    }
     return (
       <div>
-        <Nav />
+        <Nav searchVideo={this.getYoutubeVideo.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.videos[0]}/>
           <h1>Hello</h1>
