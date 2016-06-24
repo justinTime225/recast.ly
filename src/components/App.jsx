@@ -9,6 +9,10 @@ class App extends React.Component {
   componentWillMount() {
     this.getYoutubeVideo('angular tutorial');
   }
+  setCurrentVideo(video) {
+    console.log('setting video');
+    this.setState({currentVideo: video});
+  }
   getYoutubeVideo(query) {
     var YOUTUBE_API_KEY = 'AIzaSyBEsl8wfrHqZ9Ue3NCyRjARt3S8NeTv8as';
     const option = {
@@ -27,11 +31,11 @@ class App extends React.Component {
       <div>
         <Nav searchVideo={_.debounce((input) => this.getYoutubeVideo(input), 500)}/>
         <div className="col-md-7">
-          <VideoPlayer video={this.state.videos[0]}/>
+          <VideoPlayer video={this.state.currentVideo}/>
           <h1>Hello</h1>
         </div>
         <div className="col-md-5">
-          <VideoList videos={this.state.videos}/>
+          <VideoList setVideo={this.setCurrentVideo.bind(this)} videos={this.state.videos}/>
         </div>
       </div>
     );

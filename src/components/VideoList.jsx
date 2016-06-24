@@ -3,6 +3,7 @@ var VideoList = (props) => (
     {props.videos.map(function(video) {
       return (
         <VideoListEntry
+          setVideo={props.setVideo}
           key={video.etag}
           video={video}
         />);
