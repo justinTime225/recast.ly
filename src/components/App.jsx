@@ -25,7 +25,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <Nav searchVideo={this.getYoutubeVideo.bind(this)}/>
+        <Nav searchVideo={_.debounce((input) => this.getYoutubeVideo(input), 500)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.videos[0]}/>
           <h1>Hello</h1>
