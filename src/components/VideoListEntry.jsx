@@ -1,5 +1,5 @@
 var VideoListEntry = ({video}) => {
-  console.log(video);
+  // console.log(video);
   return (
   <div className="video-list-entry">
     <div className="media-left media-middle">

@@ -1,4 +1,31 @@
 // TODO: Render the `App` component to the DOM
+var YOUTUBE_API_KEY = 'AIzaSyBEsl8wfrHqZ9Ue3NCyRjARt3S8NeTv8as';
+
+var searchYouTube = ({key, query, max = 5}, callback) => {
+  // TODO
+  $.get('https://www.googleapis.com/youtube/v3/search', {
+    part: 'snippet',
+    key: key,
+    q: query,
+    maxResults: max,
+    type: 'video',
+    videoEmbeddable: 'true'
+  })
+  .done(({items}) => {
+    if (callback) {
+      callback(items);
+    }
+  })
+  .fail(({responseJSON}) => {
+    console.log('error happened did not retrieve videos');
+    responseJSON.error.errors.forEach((err) =>
+      console.error(err)
+    );
+  });
+};
+
+window.searchYouTube = searchYouTube;
+
 window.exampleVideoData = [{
   kind: 'youtube#searchResult',
   etag: 'abQHWywil_AkNqdqji7_FqiK-u4/Ykxo_CqKu8F8kcm-iNgL332gQTY',
@@ -160,4 +187,4 @@ window.exampleVideoData = [{
     liveBroadcastContent: 'none'
   }
 }];
-ReactDOM.render(<App videoData={window.exampleVideoData}/>, document.getElementById('app'));
+ReactDOM.render(<App searchYouTube={searchYouTube} API_KEY={window.YOUTUBE_API_KEY}videoData={window.exampleVideoData}/>, document.getElementById('app'));
