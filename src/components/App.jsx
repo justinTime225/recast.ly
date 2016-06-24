@@ -14,7 +14,7 @@ class App extends React.Component {
     this.setState({currentVideo: video});
   }
   getYoutubeVideo(query) {
-    var YOUTUBE_API_KEY = 'AIzaSyBEsl8wfrHqZ9Ue3NCyRjARt3S8NeTv8as';
+    var YOUTUBE_API_KEY = '';
     const option = {
       key: YOUTUBE_API_KEY,
       query: query
